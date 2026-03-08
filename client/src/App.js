@@ -3,10 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 // Import Pages
-import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Event from './pages/Event/Event';
-import Settings from './pages/Settings/Settings';
 import AuthCallback from './pages/AuthCallback/AuthCallback';
 
 // Warning Component
@@ -45,10 +43,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Event />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/event" element={<Event />} />
-        <Route path="/settings" element={<Settings />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
       </Routes>
     </Router>
