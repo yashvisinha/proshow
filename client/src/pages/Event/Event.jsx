@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Event.module.css';
 import discoballIcon from '../../assets/discoball.png';
 import CameraIcon from '../../assets/CameraIcon.png';
+import defaultPic from '../../assets/defaultPic.png';
 
 const EventPage = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
+  // Demo data – in real app this will come from QR scan result
   const entryData = {
     name: 'Name',
     department: 'Department',
     rollNumber: '100100100',
     teamName: 'Team Name',
     teamRole: 'Team Role',
+    profilePhoto: '', // leave empty or replace with real URL later
     time: new Date().toLocaleTimeString([], {
       hour: '2-digit',
       minute: '2-digit',
@@ -21,19 +26,24 @@ const EventPage = () => {
   };
 
   const handleAllowEntry = () => {
+    // TODO: real allow entry logic (API call, toast, etc.)
     setShowModal(false);
   };
 
   const handleCloseModal = () => setShowModal(false);
+
   const toggleMenu = () => setShowMenu((prev) => !prev);
 
   const handleLogout = () => {
     setShowMenu(false);
+    navigate('/'); // ← this line redirects to the Login page (root route)
+    // Optional: clear auth state if you have any
+    // localStorage.removeItem('isLoggedIn');
   };
 
   return (
     <div className={styles.container}>
-      {/* Mock Status Bar */}
+      {/* Mock status bar */}
       <div className={styles.statusBar}>
         <div className={styles.statusIcons}>
           <i className="fas fa-signal" />
@@ -42,7 +52,7 @@ const EventPage = () => {
         </div>
       </div>
 
-      {/* Header Section */}
+      {/* Header with hamburger */}
       <header className={styles.header}>
         <button
           type="button"
@@ -61,7 +71,11 @@ const EventPage = () => {
           <>
             <div className={styles.menuOverlay} onClick={() => setShowMenu(false)} />
             <div className={styles.dropdownMenu}>
-              <button type="button" className={styles.menuItem} onClick={handleLogout}>
+              <button
+                type="button"
+                className={styles.menuItem}
+                onClick={handleLogout}
+              >
                 Log Out
               </button>
             </div>
@@ -69,12 +83,12 @@ const EventPage = () => {
         )}
       </header>
 
-      {/* Hero Icon */}
+      {/* Disco ball hero */}
       <div className={styles.eventIconContainer}>
         <img src={discoballIcon} alt="Disco ball" className={styles.eventIcon} />
       </div>
 
-      {/* Scan Section */}
+      {/* Verify button */}
       <div className={styles.scanContainer}>
         <button
           type="button"
@@ -86,21 +100,37 @@ const EventPage = () => {
         </button>
       </div>
 
-      {/* Modal Section */}
+      {/* Modal */}
       {showModal && (
         <>
           <div className={styles.modalOverlay} onClick={handleCloseModal} />
           <div className={styles.modalContent}>
             <div className={styles.modalCard}>
-              <button className={styles.modalCloseBtn} onClick={handleCloseModal}>×</button>
+              <button className={styles.modalCloseBtn} onClick={handleCloseModal}>
+                ×
+              </button>
+
+              {/* Profile picture */}
+              <div className={styles.profilePhotoContainer}>
+                <img
+                  src={entryData.profilePhoto || defaultPic}
+                  alt={`${entryData.name || 'User'} profile`}
+                  className={styles.profilePhoto}
+                  onError={(e) => {
+                    e.target.src = defaultPic;
+                    e.target.onerror = null;
+                  }}
+                />
+              </div>
+
               <div className={styles.modalTime}>{entryData.time}</div>
-              
+
               {[
                 { label: 'Name', value: entryData.name },
                 { label: 'Department', value: entryData.department },
                 { label: 'Roll Number', value: entryData.rollNumber },
                 { label: 'Team Name', value: entryData.teamName || '—' },
-                { label: 'Team Role', value: entryData.teamRole || '—' }
+                { label: 'Team Role', value: entryData.teamRole || '—' },
               ].map((field, idx) => (
                 <div key={idx} className={styles.modalField}>
                   <div className={styles.modalLabel}>{field.label}</div>
@@ -108,7 +138,11 @@ const EventPage = () => {
                 </div>
               ))}
 
-              <button type="button" className={styles.allowEntryButton} onClick={handleAllowEntry}>
+              <button
+                type="button"
+                className={styles.allowEntryButton}
+                onClick={handleAllowEntry}
+              >
                 Allow Entry
               </button>
             </div>

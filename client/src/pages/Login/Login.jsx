@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';   // ← add this import
 import styles from './Login.module.css';
 import NfGoldLogo from './nf_logo.png';
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();   // ← add this hook
 
   const handleAuthLogin = () => {
     setIsLoading(true);
-    window.location.href = 'http://localhost:3000/settings';
+
+    // Simulate loading / auth delay (optional – remove in production)
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate('/event');   // ← redirects to Event page
+    }, 800); // 800ms fake delay – feels more natural
   };
 
   return (

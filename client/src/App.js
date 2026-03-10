@@ -7,7 +7,7 @@ import Login from './pages/Login/Login';
 import Event from './pages/Event/Event';
 import AuthCallback from './pages/AuthCallback/AuthCallback';
 
-// Warning Component
+// Warning Component (shown on desktop/large screens)
 const MobileWarning = () => (
   <div className="mobile-warning-overlay">
     <div className="mobile-warning-card">
@@ -20,7 +20,7 @@ const MobileWarning = () => (
 );
 
 function App() {
-  // State to track if the screen is mobile width (<= 768px)
+  // Track if screen is mobile width (<= 768px)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
@@ -29,23 +29,25 @@ function App() {
     };
 
     window.addEventListener('resize', handleResize);
-    
-    // Cleanup listener
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // If not mobile, show warning
+  // Show warning on non-mobile screens
   if (!isMobile) {
     return <MobileWarning />;
   }
 
-  // If mobile, show the app
+  // Mobile: show the app with routing
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Event />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/auth/callback" element={<AuthCallback />} />
+        
+       <Route path="/" element={<Login />} />
+       <Route path="/event" element={<Event />} />
+       <Route path="/auth/callback" element={<AuthCallback />} />
+        
+        
+        <Route path="*" element={<Event />} />
       </Routes>
     </Router>
   );

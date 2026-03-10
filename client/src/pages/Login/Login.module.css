@@ -32,18 +32,18 @@
   justify-content: center;
   text-align: center;
   width: 100%;
+  gap: 2rem;
 }
 
 /* Logo */
 .logoContainer {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .nfLogo {
   width: 190px;
   height: auto;
   object-fit: contain;
-  /* glow removed */
 }
 
 /* Headlines */
@@ -51,9 +51,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  margin-bottom: 4rem;
-  width: 100%;
-  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .headline1,
@@ -62,11 +60,9 @@
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -1.2px;
-  text-shadow: none; /* glow/shadow removed */
 }
 
 .headline1 {
-  margin-top: 2rem;
   font-size: 3.4rem;
   color: var(--color-text);
 }
@@ -83,10 +79,9 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-  display: inline-block;
 }
 
-/* Button */
+/* Button – solid gold, no gradient, no glow */
 .authButton {
   width: 100%;
   max-width: 340px;
@@ -94,20 +89,20 @@
   font-size: 1.25rem;
   font-weight: 700;
   color: #000;
-  background: linear-gradient(135deg, #ffd700 0%, #ffea80 100%);
+  background: var(--color-gold-text); 
   border: none;
   border-radius: 60px;
   cursor: pointer;
   transition: all 0.28s ease;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  margin-top: 12rem;
-  box-shadow: none; /* glow removed */
+  margin-top: 2rem;
+  box-shadow: none;
 }
 
 .authButton:hover:not(:disabled) {
   transform: translateY(-3px);
-  /* no extra shadow/glow */
+  background: #ffe066;                    /* slightly lighter on hover */
 }
 
 .authButton:active {
@@ -126,7 +121,7 @@
   text-align: center;
   letter-spacing: 0.8px;
   margin-top: auto;
-  padding-top: 2rem;
+  padding-top: 1.5rem;
 }
 
 /* Animations */
@@ -153,8 +148,8 @@
 
 /* Mobile adjustments */
 @media (max-width: 480px) {
-  .headline1 { font-size: 3.4rem; }
-  .headline2 { font-size: 3.0rem; }
-  .nfLogo { width: 120px; }
-  .authButton { padding: 16px 28px; font-size: 1.15rem; }
+  .headline1 { font-size: 2.8rem; }
+  .headline2 { font-size: 2.4rem; }
+  .nfLogo   { width: 140px; }
+  .authButton { padding: 16px 28px; font-size: 1.1rem; }
 }

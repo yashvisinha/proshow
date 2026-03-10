@@ -4,390 +4,46 @@
   margin: 0 auto;
   min-height: 100vh;
   background-color: #28282B;
-  padding: var(--spacing-md, 20px); /* Added fallback */
+  padding: 0 20px 20px;
   font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
   color: #fff;
   position: relative;
-  overflow-x: hidden; /* Prevent horizontal scroll from animations */
+  overflow-x: hidden;
 }
 
-/* Header & Nav */
+/* ─── Header ──────────────────────────────────────────────── */
 .header {
+  position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
-  position: relative;
   justify-content: center;
-  min-height: 20px;
-  animation: slideDown 0.6s ease-out;
+  padding: 16px 56px 16px 16px;    
+  margin-bottom: 32px;               
 }
 
 .pageTitle {
-  margin-top: 45px;
-  font-size: 29px;
+  font-size: 30px;                   
   background: radial-gradient(50% 50% at 50% 50%, #EAC863 0%, #E0BA54 50%, #CA9D33 100%);
-  font-weight: 600;
+  font-weight: 700;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  letter-spacing: 0.5px;
-}
-
-/* Event Icon (disco ball) */
-.eventIconContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 40px auto 48px auto;  
-  width: 100%;
-  min-height: 120px;             
-}
-
-.eventIcon {
-  width: 140px;
-  height: auto;
-  max-height: 140px;
-  object-fit: contain;
-  animation: scaleIn 0.9s ease-out;
-}
-
-/* Toggle Switch */
-.toggleContainer {
-  display: flex;
-  background-color: rgba(255, 255, 255, 0.08);
-  border-radius: 50px;
-  padding: 4px;
-  margin-bottom: 24px;
-  position: relative;
-  isolation: isolate;
-}
-
-.toggleGlider {
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  width: calc(50% - 4px);
-  height: calc(100% - 8px);
-  background-color: #EAC863;
-  border-radius: 50px;
-  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-  z-index: -1;
-  box-shadow: 0 2px 10px rgba(234, 200, 99, 0.3);
-}
-
-.toggleBtn {
-  flex: 1;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+  margin: 0;
   text-align: center;
-  padding: 10px 0;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: 'Montserrat', sans-serif;
-  cursor: pointer;
-  border-radius: 50px;
-  transition: color 0.3s ease;
-  color: #888;
-  user-select: none;
-  z-index: 1;
+  flex: 1;                           
+  margin-top: 67px;
+  margin-left: 40px;
 }
 
-.activeText {
-  color: #1E1E1E;
-  font-weight: 700;
-}
-
-/* Content Container */
-.contentFade {
-  width: 100%;
-}
-
-/* Status Bar Mock */
-.statusBar {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 4px 10px 4px;
-  font-size: 14px;
-  font-weight: 600;
-  font-family: 'Montserrat', sans-serif;
-  color: #fff;
-}
-
-.statusIcons {
-  display: flex;
-  gap: 8px;
-}
-
-/* Animations */
-.scaleIn {
-  animation: scaleIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Log Out tab */
-.logoutContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 240px;
-  padding: 40px 20px;
-}
-
-.logoutButton {
-  background: #e63946;           /* flat solid red – no gradient */
-  color: #000000;                /* black text */
-  border: none;
-  border-radius: 50px;
-  padding: 16px 80px;
-  font-size: 20px;
-  font-weight: 700;
-  font-family: 'Montserrat', sans-serif;
-  cursor: pointer;
-  box-shadow: none;              /* no glow ever */
-  transition: background-color 0.2s ease, transform 0.15s ease;
-  letter-spacing: 0.8px;
-}
-
-.logoutButton:hover {
-  background: #d32f2f;           /* slightly darker flat red on hover */
-  transform: translateY(-2px);
-  box-shadow: none;
-}
-
-.logoutButton:active {
-  transform: translateY(1px);
-  background: #c62828;           /* even darker when pressed */
-  box-shadow: none;
-}
-
-/* Developed by footer */
-.developedBy {
-  position: fixed;
-  bottom: 16px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  color: #777;
-  font-size: 13px;
-  opacity: 0.65;
-  padding: 12px 20px;
-  pointer-events: none;        /* doesn't block taps on buttons */
-  z-index: 10;
-  font-family: 'Montserrat', sans-serif;
-}
-
-/* ─── Scan tab – large golden Verify Entry button (icon big + above text) ─── */
-.scanContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 50vh;             
-  padding: 40px 20px 60px;      
-}
-
-.verifyButton {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  background-color: #EAC863;
-  color: #1E1E1E;
-  border: none;
-  border-radius: 24px;
-  padding: 48px 68px;
-  font-family: 'Montserrat', sans-serif;
-  cursor: pointer;
-  box-shadow: none;
-  transition: background-color 0.2s ease;
-  min-width: 280px;
-  width: 85%;
-  max-width: 380px;
-  margin-top: -30px;             
-}
-
-.verifyButton:hover {
-  background-color: #E0BA54;
-}
-
-.verifyButton:active {
-  background-color: #CA9D33;
-}
-
-.verifyIcon {
-  width: 88px;                 /* much larger icon */
-  height: 88px;
-  object-fit: contain;
-}
-
-.verifyText {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-/* Modal ──────────────────────────────────────────────── */
-.modalOverlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.65);   /* dark overlay */
-  z-index: 1000;
-  backdrop-filter: blur(4px);             /* nice modern touch */
-}
-
-.modalContent {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1100;
-  padding: 20px;
-  pointer-events: none;                   /* so clicks go through to overlay */
-}
-
-.modalCard {
-  position: relative;
-  pointer-events: auto;                   /* only card receives clicks */
-  background-color: #1E1E1E;
-  border-radius: 20px;
-  padding: 28px 24px;
-  width: 100%;
-  max-width: 340px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(234, 200, 99, 0.18);
-  text-align: center;
-  animation: modalPop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes modalPop {
-  from {
-    opacity: 0;
-    transform: scale(0.82) translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-.modalTime {
-  font-size: 15px;
-  color: #aaa;
-  margin-bottom: 20px;
-  font-weight: 500;
-}
-
-.modalField {
-  margin-bottom: 18px;
-  text-align: left;
-}
-
-.modalLabel {
-  font-size: 13px;
-  color: #888;
-  margin-bottom: 4px;
-  font-weight: 500;
-}
-
-.modalValue {
-  font-size: 18px;
-  font-weight: 600;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.06);
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(234, 200, 99, 0.12);
-}
-
-.allowEntryButton {
-  margin-top: 24px;
-  width: 100%;
-  background: #EAC863;
-  color: #1E1E1E;
-  border: none;
-  border-radius: 50px;
-  padding: 16px;
-  font-size: 18px;
-  font-weight: 700;
-  font-family: 'Montserrat', sans-serif;
-  cursor: pointer;
-  transition: all 0.18s ease;
-  /* No shadow/glow at all */
-}
-
-.allowEntryButton:hover {
-  background: #E0BA54;
-  transform: translateY(-1px);
-}
-
-.allowEntryButton:active {
-  transform: translateY(0);
-  background: #CA9D33;
-}
-
-/* Close button (×) */
-.modalCloseBtn {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  background: none;
-  border: none;
-  color: #aaa;
-  font-size: 28px;
-  font-weight: 300;
-  line-height: 1;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 50%;
-  transition: color 0.15s ease, background 0.15s ease;
-}
-
-.modalCloseBtn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.modalCloseBtn:active {
-  color: #EAC863;
-}
-
-/* Hamburger Menu */
-.header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 0;           
-  margin-bottom: 32px;
-}
-
+/* ─── Hamburger Menu ──────────────────────────────────────── */
 .hamburgerBtn {
   position: absolute;
   right: 8px;
-  top: -1px;
+  top: 20%;
   transform: translateY(-50%);
   background: none;
   border: none;
@@ -410,7 +66,7 @@
 
 .dropdownMenu {
   position: absolute;
-  top: 20px;
+  top: 58px;
   right: 8px;
   background-color: #1E1E1E;
   border-radius: 12px;
@@ -452,12 +108,258 @@
   z-index: 10;
 }
 
-/* Adjust scan container since we removed toggle */
+/* ─── Disco Ball Hero ─────────────────────────────────────── */
+.eventIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 32px auto 48px auto;       /* reduced top margin → less gap */
+  width: 100%;
+  min-height: 120px;
+}
+
+.eventIcon {
+  width: 140px;
+  height: auto;
+  max-height: 140px;
+  object-fit: contain;
+  animation: scaleIn 0.9s ease-out;
+}
+
+/* ─── Verify Entry Button Area ────────────────────────────── */
 .scanContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  min-height: 400px; /* increased a bit to fill space nicely */
-  padding: 60px 20px 20px;
+  min-height: 40vh;                  /* reduced height → tighter layout */
+  padding: 20px 20px 80px;           /* less top padding, more bottom space */
+}
+
+.verifyButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background-color: #EAC863;
+  color: #1E1E1E;
+  border: none;
+  border-radius: 24px;
+  padding: 48px 68px;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background-color 0.2s ease;
+  min-width: 280px;
+  width: 85%;
+  max-width: 380px;
+}
+
+.verifyButton:hover {
+  background-color: #E0BA54;
+}
+
+.verifyButton:active {
+  background-color: #CA9D33;
+}
+
+.verifyIcon {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+}
+
+.verifyText {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ─── Footer ──────────────────────────────────────────────── */
+.developedBy {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #777;
+  font-size: 13px;
+  opacity: 0.65;
+  padding: 16px 20px;
+  pointer-events: none;
+  z-index: 10;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ─── Status Bar Mock ─────────────────────────────────────── */
+.statusBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4px 12px 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.statusIcons {
+  display: flex;
+  gap: 8px;
+}
+
+/* ─── Modal (unchanged from previous) ─────────────────────── */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modalContent {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  padding: 20px;
+  pointer-events: none;
+}
+
+.modalCard {
+  position: relative;
+  pointer-events: auto;
+  background-color: #1E1E1E;
+  border-radius: 20px;
+  padding: 32px 24px 28px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(234, 200, 99, 0.18);
+  text-align: center;
+  animation: modalPop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.82) translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Profile Photo */
+.profilePhotoContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.profilePhoto {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #EAC863;
+  background-color: #333;
+}
+
+/* Modal content */
+.modalTime {
+  font-size: 15px;
+  color: #aaa;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.modalField {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.modalLabel {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.modalValue {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(234, 200, 99, 0.12);
+}
+
+.allowEntryButton {
+  margin-top: 28px;
+  width: 100%;
+  background: #EAC863;
+  color: #1E1E1E;
+  border: none;
+  border-radius: 50px;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.allowEntryButton:hover {
+  background: #E0BA54;
+  transform: translateY(-1px);
+}
+
+.allowEntryButton:active {
+  transform: translateY(0);
+  background: #CA9D33;
+}
+
+/* Close button */
+.modalCloseBtn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 50%;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.modalCloseBtn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.modalCloseBtn:active {
+  color: #EAC863;
+}
+
+/* Animations */
+.scaleIn {
+  animation: scaleIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
